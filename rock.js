@@ -3,7 +3,7 @@ function getRandomArbitrary() {
     return Math.floor(Math.random() * max);
 }
 
-function computerSelection() {
+function computerPlay() {
     num = getRandomArbitrary(max)
     return num === 0 ? "Rock"
          : num === 1  ? "Paper"
@@ -11,4 +11,4 @@ function computerSelection() {
     
 
 }
-console.log (computerSelection(getRandomArbitrary(max)))
+console.log (computerPlay(getRandomArbitrary(max)))
