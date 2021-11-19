@@ -51,6 +51,7 @@ function game() {
             : pR.includes("Lose") ? cScore += 1
             : tie += 1;
         console.log (pR);
+        console.log("Your score: " + pScore + " My score: " + cScore)
     }
     return ("Your score: " + pScore + " My score: " + cScore)     
 }
