@@ -53,6 +53,9 @@ function game() {
         console.log (pR);
         console.log("Your score: " + pScore + " My score: " + cScore)
     }
-    return ("Your score: " + pScore + " My score: " + cScore)     
+    let text = (pScore > cScore) ? "You Win"
+        : (pScore < cScore) ? "You Lose"
+        : "It's a Tie";
+    return (text)     
 }
 console.log(game());
