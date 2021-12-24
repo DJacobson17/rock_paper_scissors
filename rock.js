@@ -1,3 +1,9 @@
+let pScore = 0;
+let cScore = 0;
+const result = document.getElementById("p1");
+const scorePara = document.getElementById("p2");
+const finalResult = document.getElementById("p3");
+
 function getRandomArbitrary() {
     let max = 3;
     return Math.floor(Math.random() * max);
@@ -8,54 +14,89 @@ function computerPlay() {
     return num === 0 ? "Rock"
          : num === 1  ? "Paper"
          : "Scissors";
-
-
 }
+
+
 function computerSelection() {
     return (computerPlay(getRandomArbitrary()))
 }
 //Input player selection;
 function playerSelection() {
-    let player = prompt ("Choose rock, paper, or scissors");
+    let player = btnSelection;
 //make case insensitive;
     return (player[0].toUpperCase() + player.substring(1).toLowerCase());
 }
+document.getElementById("Rock").addEventListener("click", function() {
+    btnSelection = "Rock";
+    game();
+ });
+
+document.getElementById("Paper").addEventListener("click", function() {
+    btnSelection = "Paper";
+    game();
+ });
+
+document.getElementById("Scissors").addEventListener("click", function() {
+    btnSelection = "Scissors";
+    game();
+});
+
+
 
 //play round;
 function playRound()  {
-    let pS = playerSelection();
-    let cS = computerSelection();
+    let pS = btnSelection;
+    let cS = computerSelection();;
 //compare computer selection to player selection;
  
 //test all possible outcomes;
-    return pS == cS ? "It's a Tie!"
-        : pS == "Rock" && cS == "Paper" ? "You Lose! " + cS + " beats " + pS
-        : pS == "Rock" && cS == "Scissors" ? "You Win! " + pS + " beats " + cS
-        : pS == "Paper" && cS == "Rock" ? "You Win! " + pS + " beats " + cS
-        : pS == "Paper" && cS == "Scissors" ? "You Lose! " + cS + " beats " + pS
-        : pS == "Scissors" && cS == "Rock" ? "You Lose! " + cS + " beats " + pS
-        : "You Win! " + pS + " beats " + cS;
+    if (pS == cS) {
+        para = ("It's a Tie!");
+        return (para)
+    }
+    else if (
+        (pS == "Rock" && cS == "Scissors") ||
+        (pS == "Paper" && cS == "Rock") ||
+        (pS == "Scissors" && cS == "Paper")) {
+         
+        para = ("You Win! " + pS + " beats " + cS);
+        return (para);
+    }
+    else {
+        para = ("You Lose! " + cS + " beats " + pS);
+        return (para)
+    }
+    console.log (pScore)
+
 }
 //output string declaring results;
-//console.log (playRound())
+
 //repeat 5 times;
 function game() {
-    let c = 0;
-    let pScore = 0;
-    let cScore = 0;
-    let tie = 0;
-    while (c < 5) {
-        let pR = playRound()
-        c++;
-        pR.includes("Win") ? pScore += 1
-            : pR.includes("Lose") ? cScore += 1
-            : tie += 1;
-        console.log (pR);
-        console.log("Your score: " + pScore + " My score: " + cScore)
+    while (pScore < 5 && cScore < 5) {
+        console.log(pScore);
+        let pR = playRound();
+        result.textContent = (pR);
+        if (pR.includes("Win")) {
+            pScore += 1;
+            scorePara.textContent = ("Your score: " + pScore + " My score: " + cScore);
+        }   else if (pR.includes("Lose")) {
+             cScore += 1;
+             scorePara.textContent = ("Your score: " + pScore + " My score: " + cScore);
+        }   else {
+            scorePara.textContent = ("Your score: " + pScore + " My score: " + cScore);
     }
-    let text = (pScore > cScore) ? "You Win"
-        : (pScore < cScore) ? "You Lose"
-        : "It's a Tie";
-    return (text)     
+        
+        
+    }
+    if (pScore > cScore) {
+         let text = document.createTextNode(`You Win ${pScore}:${cScore}!`);
+         scorePara.appendChild(text);     
+
+    } else { 
+        let text = document.createTextNode(`You Lose ${cScore}:${pScore}!`);
+        scorePara.appendChild(text);     
+
+    }
+
 }
-console.log(game());
