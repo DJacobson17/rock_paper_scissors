@@ -62,7 +62,7 @@ document.getElementById("Scissors").addEventListener("click", function() {
 function playRound()  {
     let pS = btnSelection;
     let cS = computerSelection();;
-//compare computer selection to player selection;
+//compare computer selection to player selections;
  
 //test all possible outcomes;
     if (pS == cS) {
