@@ -3,8 +3,8 @@ let cScore = 0;
 const result = document.getElementById("p1");
 const scorePara = document.getElementById("p2");
 const finalResult = document.getElementById("p3");
-const buttons = document.querySelectorAll("button");
-
+const buttons = document.getElementById("butns");
+const current = document.getElementById("currentRound");
 function getRandomArbitrary() {
     let max = 3;
     return Math.floor(Math.random() * max);
@@ -32,7 +32,7 @@ document.getElementById("Rock").addEventListener("click", function() {
     playRound(btnSelection, computerSelection());
     console.log (pScore);
     if (pScore === 5 || cScore === 5) {
-        declareWinner();
+        declareWinner(pScore, cScore);
         resetButton();
     }
 
@@ -43,7 +43,7 @@ document.getElementById("Paper").addEventListener("click", function() {
     playRound(btnSelection, computerSelection());
     console.log (pScore);
     if (pScore === 5 || cScore === 5) {
-        declareWinner();
+        declareWinner(pScore, cScore);
         resetButton();
     }
 
@@ -54,7 +54,7 @@ document.getElementById("Scissors").addEventListener("click", function() {
     playRound(btnSelection, computerSelection());
     console.log (pScore);
     if (pScore === 5 || cScore === 5) {
-        declareWinner();
+        declareWinner(pScore, cScore);
         resetButton();
     }
 
@@ -116,11 +116,15 @@ function keepScore(pScore, cScore) {
 //     }
 
 function resetButton()  {
-    document.getElementById("butns").innerHTML = '';
+    buttons.style.display = "none";
+    result.style.display = "none";
+    current.style.display = "none";
     console.log("test");
-    let rst = document.createElement('button');
-    rst.innerHTML = "hello";
-    document.getElementById("butns").appendChild(rst);
+    const rst = document.createElement('button');
+    rst.innerHTML = "Try Again";
+    rst.id = 'reset';
+    rst.addEventListener("click", restartGame);
+    finalResult.appendChild(rst);
 }
 
 function declareWinner(pScore, cScore) {
@@ -131,4 +135,20 @@ function declareWinner(pScore, cScore) {
         finalResult.textContent = "You Lose!";
     }
     //document.getElementById("Rock").removeEventListener("click", function);
+}
+
+function restartGame ()  {
+    pScore = 0;
+    cScore = 0;
+    buttons.style.display = "flex";
+    result.style.display = "flex";
+    current.style.display = "flex";
+    keepScore(0,0);
+    result.textContent = " ";
+    const rst = document.getElementById("reset");
+    rst.remove();
+
+
+
+
 }
