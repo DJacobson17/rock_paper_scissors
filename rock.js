@@ -3,6 +3,7 @@ let cScore = 0;
 const result = document.getElementById("p1");
 const scorePara = document.getElementById("p2");
 const finalResult = document.getElementById("p3");
+const buttons = document.querySelectorAll("button");
 
 function getRandomArbitrary() {
     let max = 3;
@@ -32,6 +33,7 @@ document.getElementById("Rock").addEventListener("click", function() {
     console.log (pScore);
     if (pScore === 5 || cScore === 5) {
         declareWinner();
+        resetButton();
     }
 
  });
@@ -42,6 +44,7 @@ document.getElementById("Paper").addEventListener("click", function() {
     console.log (pScore);
     if (pScore === 5 || cScore === 5) {
         declareWinner();
+        resetButton();
     }
 
  });
@@ -52,6 +55,7 @@ document.getElementById("Scissors").addEventListener("click", function() {
     console.log (pScore);
     if (pScore === 5 || cScore === 5) {
         declareWinner();
+        resetButton();
     }
 
 });
@@ -110,6 +114,15 @@ function keepScore(pScore, cScore) {
         
         
 //     }
+
+function resetButton()  {
+    document.getElementById("butns").innerHTML = '';
+    console.log("test");
+    let rst = document.createElement('button');
+    rst.innerHTML = "hello";
+    document.getElementById("butns").appendChild(rst);
+}
+
 function declareWinner(pScore, cScore) {
     if (pScore > cScore) {
          finalResult.textContent = "You Win!";     
@@ -117,5 +130,5 @@ function declareWinner(pScore, cScore) {
     } else { 
         finalResult.textContent = "You Lose!";
     }
-
+    //document.getElementById("Rock").removeEventListener("click", function);
 }
