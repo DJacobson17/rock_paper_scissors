@@ -5,10 +5,11 @@ body {
 .btns {
     display: flex;
     align-items: center;
+    justify-content: center;
     justify-content: space-around;
     padding: 50px;
     gap: 25px;
-    margin: 30px;
+    
     
 }
 
@@ -26,16 +27,23 @@ body {
 #Paper {
     background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYwzFQMyQPXPfG5wziUJoEvfU2C8YlU-hD3w&usqp=CAU);
     background-size: cover;
+    
 }
+
+#reset {
+    background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdLSmHRebc0a5RFwhUmVe8yjdXdieqCWXMLQ&usqp=CAU);
+    background-size: cover;
+}
+
 #Rock, #Paper, #Scissors, #reset {
     width: 200px;
     height: 200px;
     font-size: 35px;
-    border-style: solid;
+    /*border-style: solid;
     border-width: 4px;
-    background-color: rgb(9, 70, 9);
+    background-color: rgb(9, 70, 9);*/
     border-radius: 30%;
-    border-color: sandybrown;
+    /*border-color: sandybrown;*/
 }
 p  {
     display: flex;

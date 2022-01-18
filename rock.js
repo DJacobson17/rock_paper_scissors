@@ -121,7 +121,6 @@ function resetButton()  {
     current.style.display = "none";
     console.log("test");
     const rst = document.createElement('button');
-    rst.innerHTML = "Try Again";
     rst.id = 'reset';
     rst.addEventListener("click", restartGame);
     finalResult.appendChild(rst);
