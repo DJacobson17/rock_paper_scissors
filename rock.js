@@ -146,6 +146,7 @@ function restartGame ()  {
     result.textContent = " ";
     const rst = document.getElementById("reset");
     rst.remove();
+    finalResult.textContent = "";
 
 
 
