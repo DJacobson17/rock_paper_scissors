@@ -65,11 +65,17 @@ document.getElementById("Scissors").addEventListener("click", function() {
 //play round;
 function playRound()  {
     let pS = btnSelection;
-    let cS = computerSelection();;
+    let cS = computerSelection();
+    var collection = document.getElementsByClassName("selection")
+    for (let i = 0; i < collection.length; i++) {
+        collection[i].style.backgroundColor = "transparent";
+    }
 //compare computer selection to player selections;
- 
+    
 //test all possible outcomes;
     if (pS == cS) {
+        console.log(pS)
+        document.getElementById(pS).style.backgroundColor = "purple";
         para = ("It's a Tie!");
         keepScore(pScore, cScore);
         result.textContent =  para;
@@ -77,12 +83,15 @@ function playRound()  {
         (pS == "Rock" && cS == "Scissors") ||
         (pS == "Paper" && cS == "Rock") ||
         (pS == "Scissors" && cS == "Paper")) {
-         
+        document.getElementById(pS).style.backgroundColor = "green"
+        document.getElementById(cS).style.backgroundColor = "red"
         para = ("You Win! " + pS + " beats " + cS);
         pScore = ++pScore;
         keepScore(pScore, cScore);
         result.textContent = para;
     } else {
+        document.getElementById(pS).style.backgroundColor = "green"
+        document.getElementById(cS).style.backgroundColor = "red"
         para = ("You Lose! " + cS + " beats " + pS);
         cScore = ++cScore;
         keepScore(pScore, cScore);
@@ -120,7 +129,8 @@ function resetButton()  {
     result.style.display = "none";
     current.style.display = "none";
     console.log("test");
-    const rst = document.createElement('button');
+    const rst = document.createElement('img');
+    rst.src = "images/reset.png"
     rst.id = 'reset';
     rst.addEventListener("click", restartGame);
     finalResult.appendChild(rst);
