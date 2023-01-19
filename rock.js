@@ -5,6 +5,8 @@ const scorePara = document.getElementById("p2");
 const finalResult = document.getElementById("p3");
 const buttons = document.getElementById("butns");
 const current = document.getElementById("currentRound");
+const collection = document.getElementsByClassName("selection");
+
 function getRandomArbitrary() {
     let max = 3;
     return Math.floor(Math.random() * max);
@@ -60,18 +62,19 @@ document.getElementById("Scissors").addEventListener("click", function() {
 
 });
 
+function resetBackground() {
+    for (let i = 0; i < collection.length; i++) {
+        collection[i].style.backgroundColor = "transparent";
+    }
+}
 
 
 //play round;
 function playRound()  {
     let pS = btnSelection;
     let cS = computerSelection();
-    var collection = document.getElementsByClassName("selection")
-    for (let i = 0; i < collection.length; i++) {
-        collection[i].style.backgroundColor = "transparent";
-    }
 //compare computer selection to player selections;
-    
+    resetBackground();
 //test all possible outcomes;
     if (pS == cS) {
         console.log(pS)
@@ -83,14 +86,14 @@ function playRound()  {
         (pS == "Rock" && cS == "Scissors") ||
         (pS == "Paper" && cS == "Rock") ||
         (pS == "Scissors" && cS == "Paper")) {
-        document.getElementById(pS).style.backgroundColor = "green"
+        document.getElementById(pS).style.backgroundColor = "blue"
         document.getElementById(cS).style.backgroundColor = "red"
         para = ("You Win! " + pS + " beats " + cS);
         pScore = ++pScore;
         keepScore(pScore, cScore);
         result.textContent = para;
     } else {
-        document.getElementById(pS).style.backgroundColor = "green"
+        document.getElementById(pS).style.backgroundColor = "blue"
         document.getElementById(cS).style.backgroundColor = "red"
         para = ("You Lose! " + cS + " beats " + pS);
         cScore = ++cScore;
@@ -152,6 +155,7 @@ function restartGame ()  {
     buttons.style.display = "flex";
     result.style.display = "flex";
     current.style.display = "flex";
+    resetBackground();
     keepScore(0,0);
     result.textContent = " ";
     const rst = document.getElementById("reset");
